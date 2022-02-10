@@ -5,6 +5,10 @@ require('dotenv').config();
 const express = require('express');
 const cors = require('cors');
 
+const customerRouter = require('./routers/customer');
+const movieRouter = require('./routers/movie');
+const screenRouter = require('./routers/screen');
+
 // Set up express
 const app = express();
 app.disable('x-powered-by');
@@ -19,10 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 
 
 // Tell express to use your routers here
-const customerRouter = require('./routers/customer');
+
 app.use('/customer', customerRouter);
-
-
+app.use('/movies', movieRouter);
+app.use('/screen', screenRouter);
 
 
 
